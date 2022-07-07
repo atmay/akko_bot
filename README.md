@@ -1,10 +1,10 @@
-##AKKO TELEGRAM BOT
+## AKKO TELEGRAM BOT
 
 With this bot new repatriants can easily get all basic info about Akko/Acre: where  are good supermarkets are, how to order a taxi, what is kupat holim etc.
 
-###FUNCTIONALITY
+### FUNCTIONALITY
 
-####Basic commands:
+#### Basic commands:
 
 - `/start` - start bot
 - `/commands` - short info about commands the bot understands
