@@ -5,7 +5,8 @@ from aiogram.utils.emoji import emojize
 from aiogram.types import ParseMode
 
 from settings import BOT_TOKEN
-from messages import get_contacts_msg, get_help_msg, get_start_msg
+from messages import get_contacts_msg, get_help_msg, get_start_msg, get_random_input_msg
+from keyboards import greet_kb
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -21,7 +22,7 @@ async def send_welcome(message: types.Message):
     This handler will be called when user sends `/start` command
     """
     msg = get_start_msg()
-    await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
+    await message.reply(msg, parse_mode=ParseMode.MARKDOWN, reply_markup=greet_kb)
 
 
 @dp.message_handler(commands=['help'])
@@ -64,8 +65,7 @@ async def process_shops_command(message: types.Message):
 @dp.message_handler()
 async def handle_random_input(message: types.Message):
     """handle any user message"""
-    msg = text(emojize('Я не очень умный бот, мне это непонятно 🥺\n'
-                       'Жми /help и увидишь список доступных команд \n'))
+    msg = get_random_input_msg()
     await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
 
