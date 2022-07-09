@@ -1,8 +1,8 @@
 # commands
-TAXI = '/taxi'
-RAVKAV = '/ravkav'
-FEEDBACK = '/feedback'
-HELP = '/help'
+TAXI = 'taxi'
+RAVKAV = 'ravkav'
+FEEDBACK = 'feedback'
+HELP = 'help'
 
 # buttons
 TAXI_BTN = 'Такси'

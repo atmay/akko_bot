@@ -7,7 +7,7 @@ from aiogram.types import ParseMode
 from settings import BOT_TOKEN
 from messages import get_contacts_msg, get_help_msg, get_start_msg, get_random_input_msg, get_taxi_msg, get_feedback_msg
 from keyboards import main_kb
-from constants import BUTTONS, HELP, FEEDBACK
+from constants import BUTTONS, HELP, FEEDBACK, TAXI, RAVKAV
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -65,12 +65,24 @@ async def process_transport_command(message: types.Message):
         await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
 
-@dp.message_handler(commands=['ravkav', 'taxi', 'ravkav'])
+@dp.callback_query_handler(lambda c: c.data in [TAXI, RAVKAV])
+async def process_callback_transport(callback_query: types.CallbackQuery):
+    # TODO add switch for taxi and logic for ravkav
+    await bot.answer_callback_query(callback_query.id)
+    command = callback_query.data
+    if command == TAXI:
+        msg = get_taxi_msg()
+        await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(chat_id=callback_query.from_user.id, text=msg)
+    else:
+        await bot.answer_callback_query(callback_query.id)
+
+
+@dp.message_handler(commands=['ravkav'])
 async def process_ravkav_command(message: types.Message):
     msg = text(emojize("Кучер, запрягай! 🦄\n"
                        "О чем тебе рассказать?\n"
                        ))
-    # TODO add buttons for Ravkav, Moovit, taxis
     await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
 
@@ -84,7 +96,7 @@ async def process_shops_command(message: types.Message):
 
 @dp.message_handler()
 async def handle_random_input(message: types.Message):
-    """handle any user message"""
+    """handle unknown messages and main keybord"""
     command = BUTTONS.get(message.text)
     if not command:
         msg = get_random_input_msg()
