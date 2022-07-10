@@ -6,7 +6,7 @@ HELP = 'help'
 
 # buttons
 TAXI_BTN = 'Такси'
-RAVKAV_BTN = 'Автобусы, поезд и пр.'
+RAVKAV_BTN = 'Оплата проезда: Равкав'
 HELP_BTN = 'Список команд'
 FEEDBACK_BTN = 'Обратная связь'
 

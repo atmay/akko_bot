@@ -5,8 +5,8 @@ from aiogram.utils.emoji import emojize
 from aiogram.types import ParseMode
 
 from settings import BOT_TOKEN
-from messages import get_contacts_msg, get_help_msg, get_start_msg, get_random_input_msg, get_taxi_msg, get_feedback_msg
-from keyboards import main_kb
+from messages import get_contacts_msg, get_help_msg, get_start_msg, get_random_input_msg, get_taxi_msg, get_feedback_msg, get_ravkav_msg
+from keyboards import main_kb, inline_transport_kb
 from constants import BUTTONS, HELP, FEEDBACK, TAXI, RAVKAV
 
 # Configure logging
@@ -59,21 +59,24 @@ async def process_transport_command(message: types.Message):
         await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
 
     else:
-        msg = text(emojize("Кучер, запрягай! 🦄\n"
-                           "О чем тебе рассказать?\n"
-                           ))
-        await message.reply(msg, parse_mode=ParseMode.MARKDOWN)
+        msg = text("Кучер, запрягай! 🦄\n"
+                   "О чем тебе рассказать?\n"
+                   )
+        await message.reply(msg, parse_mode=ParseMode.MARKDOWN, reply_markup=inline_transport_kb)
 
 
 @dp.callback_query_handler(lambda c: c.data in [TAXI, RAVKAV])
 async def process_callback_transport(callback_query: types.CallbackQuery):
-    # TODO add switch for taxi and logic for ravkav
     await bot.answer_callback_query(callback_query.id)
     command = callback_query.data
     if command == TAXI:
         msg = get_taxi_msg()
         await bot.answer_callback_query(callback_query.id)
-        await bot.send_message(chat_id=callback_query.from_user.id, text=msg)
+        await bot.send_message(chat_id=callback_query.from_user.id, text=msg, parse_mode=ParseMode.MARKDOWN)
+    elif command == RAVKAV:
+        msg = get_ravkav_msg()
+        await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(chat_id=callback_query.from_user.id, text=msg, parse_mode=ParseMode.HTML)
     else:
         await bot.answer_callback_query(callback_query.id)
 

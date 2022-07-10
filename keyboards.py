@@ -15,4 +15,4 @@ main_kb.add(button_help, button_feedback)
 # Inline keyboards
 inline_taxi_btn = InlineKeyboardButton(TAXI_BTN, callback_data=TAXI)
 inline_ravkav_btn = InlineKeyboardButton(RAVKAV_BTN, callback_data=RAVKAV)
-inline_transport_kb = InlineKeyboardMarkup().add(inline_taxi_btn, inline_ravkav_btn)
+inline_transport_kb = InlineKeyboardMarkup(row_width=1).add(inline_taxi_btn, inline_ravkav_btn)
