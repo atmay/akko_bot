@@ -4,13 +4,26 @@ With this bot new repatriants can easily get all basic info about Akko/Acre: whe
 
 ### FUNCTIONALITY
 
-#### Basic commands:
+#### Commands AS IS:
 
 - `/start` - start bot
 - `/help` - short info about commands the bot understands
+- `/feedback` - well, feedback is feedback :)
 - `/shops` - info about all kinds of shops - from grocery stores to kitchen utensils and more
 - `/transport` - info about ravkav, trains, buses, taxis
-- `/health` - basic info about health services, drugstores, dentists and more
-- `/children` - basic info about schools, kindergardens and activities for children
-- `/finance` - basic info on banking system of Israel
 - `/myvizit` - basic info on getting Darkon and Teudat zeut, intro to MyVizit 
+
+#### Commands TO BE
+
+- `/children` - basic info about schools, kindergardens and activities for children
+- `/health` - basic info about health services, drugstores, dentists and more
+- `/finance` - basic info on banking system of Israel
+
+### RUN
+
+- Copy repo `git clone`
+- Create `.env` file at the root directory, copy template from `.env_example` and add your bot token
+- Make sure you are using Python 3.9+
+- Install all packages listed in `requirements.txt`
+- Run `bot.py`
+- Enjoy!
