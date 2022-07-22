@@ -6,7 +6,7 @@ COPY requirements.txt /bot
 
 RUN pip3 install -r /bot/requirements.txt --no-cache-dir
 
-COPY akko_bot/ /bot
+COPY . /bot
 
 WORKDIR /bot
 
