@@ -131,5 +131,6 @@ def get_home_goods_msg():
 
 
 def get_office_supplies_msg():
-    msg = 'Здесь будет инфа про то, где в Акко и окрестностях купить канцелярию'
+    msg = '<b>Канцелярские товары в Акко:</b>' \
+          ''
     return text(msg)
